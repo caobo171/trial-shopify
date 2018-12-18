@@ -1,0 +1,57 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts",
+            "coverage/lcov-report/*.js"
+        ]
+    },
+    "rules": {
+        "max-classes-per-file": {
+            "severity": "warn"
+        },
+        "no-console": {
+            "severity": "warn"
+        },
+        "member-access": false,
+        "object-literal-sort-keys": false,
+        "no-unused-expression": {
+            "severity": "warn"
+        },
+        "one-variable-per-declaration": {
+            "severity": "warn"
+        },
+        "interface-name": {
+            "severity": "warn"
+        },
+        "ordered-imports": {
+            "severity": "warn"
+        },
+        "no-empty": {
+            "severity": "warn"
+        },
+        "variable-name": {
+            "severity": "warn",
+            "options": ["allow-pascal-case", "allow-snake-case"]
+        },
+        "prefer-const": {
+            "severity": "warn"
+        },
+        "radix": {
+            "severity": "warn"
+        },
+        "forin": {
+            "severity": "warn"
+        },
+        "prefer-for-of": {
+            "severity": "warn"
+        }
+    },
+    "jsRules": {
+        "no-console": false
+    }
+}

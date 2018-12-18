@@ -1,8 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as serviceWorker from './serviceWorker';
+import * as axios from 'axios'
 import { Hello } from "./components/Hello";
 
+(window as any).axios = axios
 ReactDOM.render(
     <Hello compiler="TypeScript" framework="React" />,
     document.getElementById("root")
