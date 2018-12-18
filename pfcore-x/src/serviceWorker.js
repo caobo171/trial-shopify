@@ -133,3 +133,8 @@ export function unregister() {
     });
   }
 }
+
+// export function sayHello(){
+//   console.log('ahhihihihihihih')
+//   window.adu = {cao:3,dung:5}
+// }
