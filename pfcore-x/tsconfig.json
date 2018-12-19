@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "module": "esnext",
     "target": "es2017",
     "lib": [
@@ -9,7 +10,7 @@
     ],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -24,11 +25,27 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "paths": {
+      "*": [
+        "*",
+        "shared/*"
+      ]
+    }
   },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "src/shopify/helper.ts"
+  ],
   "include": [
-    "src"
+    "./src/**/*"
+  ],
+  "typeRoots": [
+    "./src/types"
   ]
 }
