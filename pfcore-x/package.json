@@ -5,6 +5,8 @@
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
+    "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -13,7 +15,7 @@
     "babel-preset-react-app": "^6.1.0",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "chalk": "2.4.1",
+    "chalk": "^2.4.1",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
@@ -112,5 +114,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2"
   }
 }

@@ -116,6 +116,7 @@ module.exports = {
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
+  devtool: "source-map",
   optimization: {
     // Automatically split vendor and commons
     // https://twitter.com/wSokra/status/969633336732905474
@@ -175,7 +176,9 @@ module.exports = {
     rules: [
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
-
+     
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
@@ -419,4 +422,8 @@ module.exports = {
   // Turn off performance processing because we utilize
   // our own hints via the FileSizeReporter
   performance: false,
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM"
+    } 
 };
