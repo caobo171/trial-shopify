@@ -2,10 +2,11 @@
 
 
 const express = require('express');
-
-
+const fs = require('fs')
+const path = require('path')
 const ShopifyExpress = require('shopify-express');
 const {MemoryStrategy} = require('shopify-express/strategies');
+const session = require('express-session')
 
 const {
   SHOPIFY_APP_KEY,
@@ -21,7 +22,26 @@ const shopifyConfig = {
   scope: [SHOPIFY_APP_SCOPE],
   shopStore: new MemoryStrategy(),
   afterAuth(request:any, response:any) {
-    const { session: { accessToken, shop } } = request;
+    if(request && request.session){
+      const { session: { accessToken, shop } } = request;
+      console.log(accessToken,shop)
+      const rawdata = fs.readFileSync(path.resolve(__dirname,'../data.json'))
+    
+      const realData = JSON.parse(rawdata)
+      
+      const addData = {
+        name:shop,
+        accessToken
+      }
+      realData.shop.push(addData)
+      //let data = JSON.stringify(student);  
+       fs.writeFileSync(path.resolve(__dirname,'../data.json'), JSON.stringify(realData));  
+      console.log(__dirname,realData)
+
+    }else{
+      console.log('something went wrong')
+    }
+    
 
     // registerWebhook(shop, accessToken, {
     //   topic: 'orders/create',
@@ -53,7 +73,20 @@ const shopify = ShopifyExpress(shopifyConfig);
 const {routes, middleware} = shopify;
 const {withShop, withWebhook} = middleware;
 
+app.use(
+  session({
+    store: undefined,
+    secret: SHOPIFY_APP_SECRET,
+    resave: true,
+    saveUninitialized: false,
+  }))
 app.use('/shopify', routes);
+
+app.post('/api/create-page',()=>{
+  console.log('very ok')
+})
+
+
 
 
 export default app
