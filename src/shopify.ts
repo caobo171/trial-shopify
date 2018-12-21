@@ -7,6 +7,9 @@ const path = require('path')
 const ShopifyExpress = require('shopify-express');
 const {MemoryStrategy} = require('shopify-express/strategies');
 const session = require('express-session')
+const bodyParser  = require('body-parser')
+
+import {shopifyMiddleware} from './middleware/shopifyMiddleware'
 
 const {
   SHOPIFY_APP_KEY,
@@ -73,6 +76,8 @@ const shopify = ShopifyExpress(shopifyConfig);
 const {routes, middleware} = shopify;
 const {withShop, withWebhook} = middleware;
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(
   session({
     store: undefined,
@@ -82,7 +87,8 @@ app.use(
   }))
 app.use('/shopify', routes);
 
-app.post('/api/create-page',()=>{
+app.post('/api/create-page',shopifyMiddleware,()=>{
+
   console.log('very ok')
 })
 
