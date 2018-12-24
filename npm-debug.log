@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'build:live' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose run-script [ 'prebuild:live', 'build:live', 'postbuild:live' ]
+5 info lifecycle pfserver-x@1.0.0~prebuild:live: pfserver-x@1.0.0
+6 silly lifecycle pfserver-x@1.0.0~prebuild:live: no script for prebuild:live, continuing
+7 info lifecycle pfserver-x@1.0.0~build:live: pfserver-x@1.0.0
+8 verbose lifecycle pfserver-x@1.0.0~build:live: unsafe-perm in lifecycle true
+9 verbose lifecycle pfserver-x@1.0.0~build:live: PATH: /usr/share/npm/bin/node-gyp-bin:/home/caobo171/Documents/project/pagefly-x/pfserver-x/node_modules/.bin:/tmp/yarn--1545580516961-0.04106814664924041:/home/caobo171/Documents/project/pagefly-x/pfserver-x/node_modules/.bin:/home/caobo171/.config/yarn/link/node_modules/.bin:/home/caobo171/Documents/project/pagefly-x/pfserver-x/node_modules/.bin:/home/caobo171/.config/yarn/link/node_modules/.bin:/home/caobo171/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle pfserver-x@1.0.0~build:live: CWD: /home/caobo171/Documents/project/pagefly-x/pfserver-x
+11 silly lifecycle pfserver-x@1.0.0~build:live: Args: [ '-c',
+11 silly lifecycle   'nodemon --watch \'src/**/*.ts\' --exec \'ts-node\' src/index.ts' ]
+12 silly lifecycle pfserver-x@1.0.0~build:live: Returned: code: 1  signal: null
+13 info lifecycle pfserver-x@1.0.0~build:live: Failed to exec build:live script
+14 verbose stack Error: pfserver-x@1.0.0 build:live: `nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/usr/share/npm/lib/utils/lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:126:13)
+14 verbose stack     at EventEmitter.emit (events.js:214:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:126:13)
+14 verbose stack     at ChildProcess.emit (events.js:214:7)
+14 verbose stack     at maybeClose (internal/child_process.js:925:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+15 verbose pkgid pfserver-x@1.0.0
+16 verbose cwd /home/caobo171/Documents/project/pagefly-x/pfserver-x
+17 error Linux 4.15.0-43-generic
+18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "build:live"
+19 error node v8.10.0
+20 error npm  v3.5.2
+21 error code ELIFECYCLE
+22 error pfserver-x@1.0.0 build:live: `nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts`
+22 error Exit status 1
+23 error Failed at the pfserver-x@1.0.0 build:live script 'nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the pfserver-x package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs pfserver-x
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls pfserver-x
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

@@ -20,5 +20,5 @@ app.use(shopifyApp)
 //     res.send({message:'messagel okk'})
 // })
 app.listen(port,()=>{
-    console.log(`server is running on port ${port}`)
+    console.log(`server is running on port ${port} 1`)
 })

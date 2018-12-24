@@ -6,10 +6,11 @@ const fs = require('fs')
 const path = require('path')
 const ShopifyExpress = require('shopify-express');
 const {MemoryStrategy} = require('shopify-express/strategies');
+const ShopifyAPIClient = require('shopify-api-node')
 const session = require('express-session')
 const bodyParser  = require('body-parser')
 
-import {shopifyMiddleware} from './middleware/shopifyMiddleware'
+import {shopifyMiddleware ,initShop} from './middleware/shopifyMiddleware'
 
 const {
   SHOPIFY_APP_KEY,
@@ -27,19 +28,7 @@ const shopifyConfig = {
   afterAuth(request:any, response:any) {
     if(request && request.session){
       const { session: { accessToken, shop } } = request;
-      console.log(accessToken,shop)
-      const rawdata = fs.readFileSync(path.resolve(__dirname,'../data.json'))
-    
-      const realData = JSON.parse(rawdata)
-      
-      const addData = {
-        name:shop,
-        accessToken
-      }
-      realData.shop.push(addData)
-      //let data = JSON.stringify(student);  
-       fs.writeFileSync(path.resolve(__dirname,'../data.json'), JSON.stringify(realData));  
-      console.log(__dirname,realData)
+      initShop(shop,accessToken)
 
     }else{
       console.log('something went wrong')
@@ -87,9 +76,22 @@ app.use(
   }))
 app.use('/shopify', routes);
 
-app.post('/api/create-page',shopifyMiddleware,()=>{
+app.post('/api/create-page',shopifyMiddleware,async (req:any,res:any)=>{
+  const {shop,accessToken} = req
+  const {title,pageData} = req.body
+  const shopifyClient = new ShopifyAPIClient({shopName:shop,accessToken})
+  const page: any = await shopifyClient.page.create({
+    title,
+    body_html:pageData
+  })
 
-  console.log('very ok')
+  console.log(page)
+  res.send(page)
+
+  
+
+  console.log(req.shop,req.accessToken)
+  //console.log('very ok')
 })
 
 
